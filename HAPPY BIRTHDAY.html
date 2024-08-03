@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reveal Content Example</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="c:\Users\aakas\Downloads\heart-emoji-512x472-fu0iwkpr.png" type="image/x-icon">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: radial-gradient(circle, #ff69b4, #ffc0cb);
+            color: #333;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .reveal-button {
+            font-size: 24px;
+            padding: 20px 40px;
+            background-color: #ff69b4;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, transform 0.3s;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .reveal-button:hover {
+            background-color: #ff1493;
+            transform: scale(1.05);
+        }
+        .reveal-button svg {
+            width: 24px;
+            height: 24px;
+            fill: #f42f91;
+        }
+        .reveal-button .heart-left {
+            margin-right: 10px;
+        }
+        .reveal-button .heart-right {
+            margin-left: 10px;
+        }
+        .content {
+            display: none; /* Initially hidden */
+            width: 60%;
+            max-width: 400px;
+            padding: 15px;
+            border-radius: 10px;
+            background-color: #f969d5;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border: 4px solid #ff69b4;
+            text-align: center;
+            position: relative;
+        }
+        .title {
+            font-size: 32px;
+            color: #f4364f;
+            text-shadow: 2px 2px 0 #ffc0cb, /* Light pink shadow */
+                         4px 4px 0 #ff69b4, /* Bright pink shadow */
+                         6px 6px 0 #ff1493; /* Deep pink shadow */
+            transform: perspective(300px) rotateX(5deg) rotateY(-5deg);
+             margin-bottom: 20px;
+         }
+        .message {
+            font-size: 20px;
+            margin: 20px 0;
+        }
+        .timer {
+            font-size: 15px;
+            margin-top: 15px;
+            padding: 7px;
+            border: 1px solid #ff69b4;
+            border-radius: 10px;
+            box-shadow: 3px 3px 8px rgb(254, 254, 254), inset 3px 3px 8px rgba(255, 255, 255, 0.5);
+            background-color: #ffe4e1;
+        }
+        .page {
+            display: none;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: radial-gradient(circle, #ff69b4, #ffc0cb);
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .page.active {
+            display: flex;
+        }    
+        .gif {
+            width: 80%;
+            max-width: 600px;
+            margin: 19px auto;
+        }
+        .audio-container {
+            display: none; /* Initially hidden */
+        }
+    </style>
+</head>
+<body>
+    <!-- Centered Reveal Button with Heart Icons on Both Sides -->
+    <button class="reveal-button" onclick="revealContent()">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="heart-icon heart-left">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+        😶‍🌫️PRESS ME😶‍🌫️
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="heart-icon heart-right">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+    </button>
+    <div class="audio-container">
+        <audio id="birthday-audio">
+            <source src="c:\Users\aakas\Downloads\Untitled video - Made with Clipchamp.ogg" type="audio/ogg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+
+    <!-- Hidden Content -->
+    <div class="content" id="website-content">
+        <h1 class="title">🎉Happy Birthday!🎉</h1>
+        <p class="message">Wishing 🐖 SUARIN a day filled with love, joy, and all 🐖 favorite things.</p>
+        <!-- Removed the birthday image -->
+        <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExZzA3em81dXNvM2huYTR3bTZ6Nml5ZWRmZW81ZW11MnZiZ3RnazNuNCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/IQF90tVlBIByw/200.webp" alt="Birthday Celebration GIF" class="gif">
+        <p class="message">May 🐖 year ahead be filled with happiness and wonderful surprises. Have a fantastic day!</p>
+        <div class="timer" id="timer">
+            😚SINCE WORLD GOT CHAOTIC😚: 
+        <span id="time-since-birth"></span>
+        </div>
+    </div>
+
+    <!-- Include canvas-confetti library -->
+ <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
+    <script>
+        // Function to reveal the content and trigger confetti
+        function revealContent() {
+            document.getElementById('website-content').style.display = 'block';
+            document.querySelector('.reveal-button').style.display = 'none';
+           
+           
+            var audio = document.getElementById('birthday-audio');
+            audio.play();
+            
+            // Trigger confetti with heart shapes
+            const defaults = {
+                spread: 360,
+                ticks: 100,
+                gravity: 0,
+                decay: 0.95,
+                startVelocity: 15,
+                shapes: ["hearts"],
+                colors: ["FFC0CB", "FF69B4", "FF1493", "C71585"],
+            };
+            
+            confetti({
+                ...defaults,
+                particleCount: 100,
+                scalar: 2,
+            });
+
+            confetti({
+                ...defaults,
+                particleCount: 100,
+                scalar: 3,
+            });
+
+            confetti({
+                ...defaults,
+                particleCount: 100,
+                scalar: 4,
+            });
+        }
+
+        // Countdown timer function
+        function updateTime() {
+            // Set the birth date and time
+            var birthDate = new Date('2006-08-10 12:00:00'); // Replace with actual birth date and time
+            var now = new Date();
+            var timeDifference = now - birthDate;
+
+            // Calculate time components
+            var years = Math.floor(timeDifference / (1000 * 60 * 60 * 24 * 365.25));
+            var months = Math.floor((timeDifference % (1000 * 60 * 60 * 24 * 365.25)) / (1000 * 60 * 60 * 24 * 30.44));
+            var days = Math.floor((timeDifference % (1000 * 60 * 60 * 24 * 30.44)) / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+            // Display the result
+            document.getElementById('time-since-birth').innerHTML = 
+                years + ' years ' + 
+                months + ' months ' + 
+                days + ' days ' + 
+                hours + ' hours ' + 
+                minutes + ' minutes ' + 
+                seconds + ' seconds';
+        }
+
+        // Update the timer every second
+        setInterval(updateTime, 1000);
+    </script>
+</body>
+</html>
